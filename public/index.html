@@ -3,138 +3,90 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tech Blog Focus - Preview</title>
+    <title>Tech Blog Focus Preview</title>
     <style>
-      :root {
-        --accent: #1d4ed8;
-        --text: #0f172a;
-        --muted: #475569;
-        --bg: #f8fafc;
-        --card: #ffffff;
-        --line: #e2e8f0;
-      }
-      * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
-        color: var(--text);
-        background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
-      }
-      .wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-      .nav {
-        display: flex; align-items: center; justify-content: space-between;
-        padding: 18px 0;
-      }
-      .brand { font-size: 20px; font-weight: 700; color: var(--text); }
-      .menu { display: flex; gap: 16px; color: var(--muted); font-size: 14px; }
-      .hero {
-        margin-top: 20px;
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 42px;
-        box-shadow: 0 16px 50px rgba(15, 23, 42, 0.08);
-      }
-      h1 { margin: 0; font-size: 44px; line-height: 1.1; }
-      .sub { margin: 16px 0 24px; color: var(--muted); font-size: 20px; line-height: 1.5; max-width: 760px; }
-      .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
-      .btn {
-        border: none; border-radius: 10px; padding: 11px 16px; font-weight: 600;
-        cursor: pointer; text-decoration: none; display: inline-block;
-      }
-      .btn-primary { background: var(--accent); color: white; }
-      .btn-secondary { background: #eef2ff; color: #1e293b; }
-      .grid {
-        margin-top: 20px;
-        display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px;
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        padding: 18px;
-      }
-      .card h3 { margin: 0 0 8px; font-size: 18px; }
-      .card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
-      .section { margin-top: 20px; }
-      .section h2 { margin: 0 0 10px; font-size: 24px; }
-      .section p { margin: 0; color: var(--muted); line-height: 1.7; }
-      .feature-list { margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
-      .feature {
-        background: #f8fafc;
-        border: 1px solid var(--line);
-        border-radius: 12px;
-        padding: 14px;
-      }
-      .footer {
-        margin: 26px 0 36px;
-        text-align: center;
-        color: var(--muted);
-        font-size: 13px;
-      }
-      @media (max-width: 900px) {
-        h1 { font-size: 34px; }
-        .grid { grid-template-columns: 1fr; }
-        .feature-list { grid-template-columns: 1fr; }
-        .hero { padding: 24px; }
-      }
+      :root { --bg:#f7f8ff; --ink:#111827; --muted:#4b5563; --accent:#1d4ed8; --line:#dbe3ff; }
+      * { box-sizing:border-box; }
+      body { margin:0; font-family: "SF Pro Display","Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
+      .wrap { max-width:1080px; margin:0 auto; padding:20px; }
+      .header { background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 20px; display:flex; justify-content:space-between; align-items:center; }
+      .title { font-weight:800; font-size:24px; }
+      .search { background:#eff4ff; padding:8px 12px; border-radius:10px; color:#1e3a8a; font-size:14px; }
+      .layout { margin-top:16px; display:grid; grid-template-columns:2fr 1fr; gap:14px; }
+      .main, .side { display:flex; flex-direction:column; gap:14px; }
+      .card { background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px; }
+      .hero h1 { margin:0 0 10px; font-size:36px; line-height:1.15; }
+      .hero p { margin:0; color:var(--muted); line-height:1.7; }
+      .meta { margin-top:14px; color:#1e3a8a; font-size:13px; display:flex; gap:14px; flex-wrap:wrap; }
+      .post { border-top:1px dashed #d9e2ff; padding-top:12px; margin-top:12px; }
+      .post h3 { margin:0; font-size:20px; }
+      .post p { margin:8px 0 0; color:var(--muted); line-height:1.7; }
+      .badge { display:inline-block; margin-top:8px; padding:4px 8px; border-radius:999px; background:#ecf2ff; color:#1d4ed8; font-size:12px; }
+      .stack { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:8px; }
+      .stack li { padding:6px 10px; background:#eef2ff; border-radius:999px; color:#1e3a8a; font-size:12px; }
+      .newsletter input { width:100%; padding:10px; border:1px solid #d7e2ff; border-radius:10px; margin-top:8px; }
+      .newsletter button { width:100%; margin-top:10px; border:0; border-radius:10px; padding:10px; background:var(--accent); color:#fff; font-weight:700; }
+      @media (max-width:920px){ .layout{grid-template-columns:1fr;} .hero h1{font-size:30px;} }
     </style>
   </head>
   <body>
     <div class="wrap">
-      <header class="nav">
-        <div class="brand">Tech Blog Focus</div>
-        <nav class="menu">
-          <span>Home</span>
-          <span>Features</span>
-          <span>Cases</span>
-          <span>Contact</span>
-        </nav>
+      <header class="header">
+        <div class="title">Tech Blog Focus</div>
+        <div class="search">Search posts, tags, series...</div>
       </header>
 
-      <main class="hero">
-        <h1>Tech Blog Focus</h1>
-        <p class="sub">A content-first template for engineering blogs, releases and technical guides.</p>
-        <div class="cta-row">
-          <a href="#" class="btn btn-primary">Start With This Template</a>
-          <a href="#" class="btn btn-secondary">View Documentation</a>
-        </div>
-      </main>
+      <div class="layout">
+        <main class="main">
+          <article class="card hero">
+            <h1>Shipping AI Features on Edge: A Practical Architecture Playbook</h1>
+            <p>Template for engineering content teams. Structured for deep tutorials, release notes, and multi-part technical series with clear navigation and tag taxonomy.</p>
+            <div class="meta"><span>12 min read</span><span>By Platform Team</span><span>Updated Mar 2026</span></div>
+          </article>
 
-      <section class="grid section">
-        <article class="card">
-          <h3>Ready-to-Deploy Structure</h3>
-          <p>Comes with homepage sections, content blocks and a clean information hierarchy.</p>
-        </article>
-        <article class="card">
-          <h3>Cloudflare Friendly</h3>
-          <p>Designed to work with Pages, Workers, D1 and KV workflow in your platform strategy.</p>
-        </article>
-        <article class="card">
-          <h3>Commercial Reuse</h3>
-          <p>Template metadata and versioning are prepared for production deployment and updates.</p>
-        </article>
-      </section>
+          <article class="card">
+            <h2 style="margin:0;">Latest Articles</h2>
+            <div class="post">
+              <h3>Designing D1 + KV content pipelines</h3>
+              <p>A sample guide about read path, write path, and rollback-safe publishing workflow on Cloudflare.</p>
+              <span class="badge">Architecture</span>
+            </div>
+            <div class="post">
+              <h3>How we version templates with semantic tags</h3>
+              <p>Example breakdown of template release strategy: manifest, checksum, preview, rollback checkpoints.</p>
+              <span class="badge">Release</span>
+            </div>
+            <div class="post">
+              <h3>Edge SEO checklist for multilingual blogs</h3>
+              <p>Sample content on URL strategy, language routes, canonical links, and metadata automation.</p>
+              <span class="badge">SEO</span>
+            </div>
+          </article>
+        </main>
 
-      <section class="section card">
-        <h2>What You Can Customize</h2>
-        <p>Swap brand assets, update copy, connect forms, and map routes to your deployment pipeline.</p>
-        <div class="feature-list">
-          <div class="feature">Hero messaging and value proposition</div>
-          <div class="feature">Feature modules and media blocks</div>
-          <div class="feature">Case study and trust sections</div>
-          <div class="feature">Contact CTA and conversion area</div>
-        </div>
-      </section>
-
-      <section class="section card">
-        <h2>Deployment Notes</h2>
-        <p>This preview demonstrates the visual template shell. Content and routes are applied by your deployment APIs in user accounts.</p>
-      </section>
-
-      <footer class="footer">
-        Template preview generated for Mirror-X Template Factory
-      </footer>
+        <aside class="side">
+          <section class="card">
+            <h3 style="margin:0 0 8px;">Popular Tags</h3>
+            <ul class="stack">
+              <li>Workers</li><li>D1</li><li>KV</li><li>Observability</li><li>Prompting</li><li>Release Ops</li>
+            </ul>
+          </section>
+          <section class="card">
+            <h3 style="margin:0 0 10px;">Series</h3>
+            <ol style="margin:0; padding-left:18px; color:#374151; line-height:1.9;">
+              <li>Bootstrapping user control API</li>
+              <li>Template marketplace internals</li>
+              <li>Production rollback drills</li>
+            </ol>
+          </section>
+          <section class="card newsletter">
+            <h3 style="margin:0;">Weekly Edge Notes</h3>
+            <p style="margin:8px 0 0; color:#4b5563;">Sample newsletter block for updates and release highlights.</p>
+            <input placeholder="you@company.com" />
+            <button>Subscribe</button>
+          </section>
+        </aside>
+      </div>
     </div>
   </body>
 </html>
